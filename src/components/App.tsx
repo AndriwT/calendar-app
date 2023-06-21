@@ -6,15 +6,16 @@ import WritingSection from "./WritingSection";
 import "react-calendar/dist/Calendar.css";
 import Calendar from "react-calendar";
 
-const [date, setDate] = useState<any>(new Date());
-
 const App = () => {
+  const [date, setDate] = useState<any>(new Date());
   return (
     <div className="flex flex-col pr-10">
       <h1 className="pb-4">Calendar App </h1>
       <div className="flex flex-col">
-        <Day />
-        <Calendar setDate={setDate} value={date} />
+        <div className="flex justify-between">
+          <Day />
+          <Calendar onChange={setDate} value={date} />
+        </div>
         <div className="flex w-full pt-4">
           <div className="flex flex-col">
             <div className="pb-2">
