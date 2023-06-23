@@ -24,25 +24,27 @@ const SignInWithEmailPassword: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="flex flex-col p-2" onSubmit={handleSubmit}>
       <Input
         required
+        className="m-2 p-2 rounded-md"
         name="email"
-        placeholder="email"
-        type="Your email..."
+        placeholder="Your email..."
+        type="email"
         onChange={handleChange}
       />
       <Input
         required
+        className="m-2 p-2 rounded-md"
         name="password"
-        placeholder="password"
-        type="Choose a strong password..."
+        placeholder="Choose a strong password..."
+        type="password"
         onChange={handleChange}
       />
 
-      {fbError && <Text>fbError.message</Text>}
+      {fbError && <Text>{fbError.message}</Text>}
 
-      <Button type="submit" isLoading={loading}>
+      <Button className="mb-4" type="submit" isLoading={loading}>
         Sign In
       </Button>
     </form>

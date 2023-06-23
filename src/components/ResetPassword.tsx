@@ -38,6 +38,8 @@ const ResetPassword = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
 
+            {fbError && <Text>{fbError.message}</Text>}
+
             <Button type="submit" isLoading={sending}>
               Reset Password
             </Button>

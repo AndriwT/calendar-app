@@ -7,7 +7,11 @@ const SignInWithProvider = () => {
 
   return (
     <Flex>
-      <Button isLoading={loading} onClick={() => signInWithGoogle()}>
+      <Button
+        className="bg-orange-300 p-4 rounded-lg mb-4"
+        isLoading={loading}
+        onClick={() => signInWithGoogle()}
+      >
         Continue with Google
       </Button>
 

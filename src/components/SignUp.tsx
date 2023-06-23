@@ -43,9 +43,10 @@ const SignUp: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="flex flex-col p-2" onSubmit={handleSubmit}>
       <Input
         required
+        className="m-2 p-2 rounded-md"
         name="email"
         placeholder="email"
         type="email"
@@ -53,6 +54,7 @@ const SignUp: React.FC = () => {
       />
       <Input
         required
+        className="m-2 p-2 rounded-md"
         name="password"
         placeholder="password"
         type="password"
@@ -60,6 +62,7 @@ const SignUp: React.FC = () => {
       />
       <Input
         required
+        className="m-2 p-2 rounded-md"
         name="confirmPassword"
         placeholder="confirmPassword"
         type="password"
@@ -68,7 +71,7 @@ const SignUp: React.FC = () => {
 
       {(error || fbError) && <Text>{error || fbError?.message}</Text>}
 
-      <Button type="submit" isLoading={loading}>
+      <Button className="mb-4" type="submit" isLoading={loading}>
         Sign Up
       </Button>
     </form>
