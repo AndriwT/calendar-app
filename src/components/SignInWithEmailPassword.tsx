@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button, Flex, Input, Text } from "@chakra-ui/react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 
-const SignInWithEmailPassword: React.FC = () => {
+const LogIn: React.FC = () => {
   const [signInForm, setSignInForm] = useState({
     email: "",
     password: "",
@@ -51,4 +51,4 @@ const SignInWithEmailPassword: React.FC = () => {
   );
 };
 
-export default SignInWithEmailPassword;
+export default LogIn;
