@@ -5,12 +5,6 @@ import ToDos from "./ToDos";
 import WritingSection from "./WritingSection";
 import "react-calendar/dist/Calendar.css";
 import Calendar from "react-calendar";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "@/firebase/app";
-import { Button } from "@chakra-ui/react";
-import { signOut } from "firebase/auth";
-import SignInWithEmailPassword from "./SignInWithEmailPassword";
-import SignInWithProvider from "./signInWithProvider";
 
 const App = () => {
   const [date, setDate] = useState<any>(new Date());
