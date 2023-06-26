@@ -1,30 +1,46 @@
-import Image from "next/image";
 import { Inter } from "next/font/google";
-import App from "@/components/App";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/app";
-import { signOut } from "firebase/auth";
-import { Button, Text } from "@chakra-ui/react";
-import SignInWithEmailPassword from "@/components/SignInWithEmailPassword";
-import SignInWithProvider from "@/components/SignInWithProvider";
-import SignUp from "@/components/SignUp";
+import { Button, Flex, Heading, Text, Image } from "@chakra-ui/react";
+import AuthButtons from "@/components/AuthButtons";
+import { redirect } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [user, loading] = useAuthState(auth);
+
+  if (user && !loading && window) {
+    window.location.href = "/CalendarDay";
+  }
+
+  if (loading || user) return null;
+
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24`}
+    <Flex
+      direction="column"
+      align="center"
+      position="relative"
+      top={200}
+      text-align="center"
+      width={{ base: "80%", md: "60%", lg: "600px" }}
+      height="100vh"
+      mx="auto"
     >
-      <Text fontSize="14pt" mt={16}>
-        {loading && "🕒 Checking authentication..."}
-        {!loading && user && `👋 Hi ${user?.email}, welcome!`}
-        {!user && "🙅‍♀️ You are not signed in yet."}
-      </Text>
-      <div className="flex flex-col justify-center bg-stone-300 rounded-lg">
-        <App />
-      </div>
-    </main>
+      <Flex w="full" direction="column" align="stretch" textAlign="center">
+        <Heading fontSize="20pt" fontWeight={700} mt={5}>
+          Home
+        </Heading>
+        <Text fontSize="14pt" mt={16}>
+          {loading && "🕒 Checking authentication..."}
+          {!loading && user && `👋 Hi ${user?.email}, welcome!`}
+          {!user && "🙅‍♀️ You are not signed in yet."}
+        </Text>
+
+        <Flex mt={16}>
+          <AuthButtons />
+        </Flex>
+      </Flex>
+    </Flex>
   );
 }
